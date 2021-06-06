@@ -24,8 +24,8 @@ public class App {
         int tilRetirement = myApp.untilRetirement(age, retirement);
         int currentYear = rightNow.getWeekYear();
 
-        myApp.printRetirement(tilRetirement);
-        myApp.printRetirementYear(tilRetirement, currentYear);
+        String output = myApp.buildOutput(tilRetirement, currentYear, tilRetirement + currentYear);
+        myApp.printRetirementYear(output);
     }
 
     public String setAge() {
@@ -42,11 +42,11 @@ public class App {
         return retirement - age;
     }
 
-    public void printRetirement(int tilRetirement) {
-        System.out.println("You have " + tilRetirement + " years left until you can retire.");
+    public String buildOutput (int tilRetirement, int currentYear, int retirementYear) {
+        return "You have " + tilRetirement + " years left until you can retire.\nIt's " + currentYear + ", so you can retire in " + retirementYear + ".";
     }
 
-    public void printRetirementYear(int tilRetirement, int currentYear) {
-        System.out.printf("It's %d, so you can retire in %d.", currentYear, currentYear + tilRetirement);
+    public void printRetirementYear(String output) {
+        System.out.print(output);
     }
 }
